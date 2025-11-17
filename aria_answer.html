@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accordion with ARIA (HTML only, Static)</title>
+  <style>
+    .accordion-title {
+      background: #eee;
+      font-weight: bold;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      font-size: 1em;
+      transition: background 0.2s;
+    }
+    .accordion-title:focus {
+      outline: 2px solid #0057b8;
+      background: #cce5ff;
+    }
+    .accordion-content {
+      padding: 10px;
+      border: 1px solid #eee;
+      display: none;
+    }
+    .active .accordion-content {
+      display: block;
+    }
+  </style>
+
+</head>
+<body>
+    <header><h1>Buttons and ARIA answer</h1></header>
+    <main>
+  <div class="accordion">
+    <div class="accordion-section active">
+      <button
+        class="accordion-title"
+        aria-expanded="true"
+        aria-controls="panel-1"
+        id="accordion-title-1"
+      >Section 1</button>
+      <div
+        class="accordion-content"
+        id="panel-1"
+        role="region"
+        aria-labelledby="accordion-title-1"
+      >Content for section 1.</div>
+    </div>
+    <div class="accordion-section">
+      <button
+        class="accordion-title"
+        aria-expanded="false"
+        aria-controls="panel-2"
+        id="accordion-title-2"
+      >Section 2</button>
+      <div
+        class="accordion-content"
+        id="panel-2"
+        role="region"
+        aria-labelledby="accordion-title-2"
+      >Content for section 2.</div>
+    </div>
+    <div class="accordion-section">
+      <button
+        class="accordion-title"
+        aria-expanded="false"
+        aria-controls="panel-3"
+        id="accordion-title-3"
+      >Section 3</button>
+      <div
+        class="accordion-content"
+        id="panel-3"
+        role="region"
+        aria-labelledby="accordion-title-3"
+      >Content for section 3.</div>
+    </div>
+  </div>
+    <ol>
+    <li><a href="answer.html">HTML Answer</a></li>
+    <li><a href="aria_answer.html">ARIA Answer</a></li>
+    <li><a href="index.html">Inaccessible Accordion</a></li>
+</ol>
+</main>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // JS only toggles .active on parent accordion-section for appearance;
+      // ARIA does NOT update dynamically in this example.
+      document.querySelectorAll('.accordion-title').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btn.parentElement.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+<!-- Code taken & modified from UMGPT with the prompt, "write me an accordion before and after solution of code that students can work on during an ARIA lecture - this should be something they can complete in 10 minutes and should include any css and javascript - but do not make them change the javascript for the fixed answer code" UMGPT. (2025). UMGPT (GPT-4.1 November 17th version) [Large language model] -->
